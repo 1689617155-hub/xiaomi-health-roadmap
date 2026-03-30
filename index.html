@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小米健康赛道规划 2.0 — 核心路径大图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f5f7fa;
+    color: #1a202c;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .slide {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 48px 60px 60px;
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #d94f1e, #e0820a, #c9940a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .header .subtitle {
+    font-size: 18px;
+    color: #64748b;
+    font-weight: 300;
+  }
+  .header .subtitle em {
+    color: #d97706;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ===== POSITIONING BANNER ===== */
+  .positioning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,209,102,0.06));
+    border: 1px solid rgba(255,159,28,0.3);
+    border-radius: 16px;
+    padding: 20px 40px;
+    margin-bottom: 36px;
+  }
+  .positioning .pos-label {
+    font-size: 13px;
+    color: #d97706;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .positioning .pos-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a202c;
+  }
+  .positioning .pos-desc {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* ===== USER INSIGHT ===== */
+  .user-insight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+  .insight-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 22px 26px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .insight-card .ic-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0d9488;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .insight-card .ic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .tag.orange { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+  .tag.cyan { background: #ccfbf1; color: #065f46; border: 1px solid #5eead4; }
+  .tag.pink { background: #ffe4e6; color: #9f1239; border: 1px solid #fda4af; }
+  .tag.purple { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .stat-item .num {
+    font-size: 24px;
+    font-weight: 900;
+    color: #d97706;
+  }
+  .stat-item .label {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* ===== TWO MAIN LINES ===== */
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+  }
+  .section-title.orange::before { background: #d97706; }
+  .section-title.orange { color: #92400e; }
+  .section-title.cyan::before { background: #0d9488; }
+  .section-title.cyan { color: #0f766e; }
+  .section-title.purple::before { background: #7c3aed; }
+  .section-title.purple { color: #5b21b6; }
+
+  .two-lines {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+
+  .line-card {
+    border-radius: 16px;
+    padding: 26px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .line-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .line-card.line1 {
+    background: linear-gradient(180deg, #fff7ed 0%, #fff 100%);
+    border: 1px solid #fed7aa;
+  }
+  .line-card.line1::before { background: linear-gradient(90deg, #ea580c, #d97706); }
+
+  .line-card.line2 {
+    background: linear-gradient(180deg, #f0fdfa 0%, #fff 100%);
+    border: 1px solid #99f6e4;
+  }
+  .line-card.line2::before { background: linear-gradient(90deg, #0d9488, #14b8a6); }
+
+  .line-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .line-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .line1 .line-icon { background: #ffedd5; }
+  .line2 .line-icon { background: #ccfbf1; }
+
+  .line-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a202c;
+  }
+  .line-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  .flow-steps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .line1 .flow-step { background: #fff7ed; color: #9a3412; border: 1px solid #fdba74; }
+  .line2 .flow-step { background: #f0fdfa; color: #065f46; border: 1px solid #5eead4; }
+  .flow-arrow {
+    color: #94a3b8;
+    font-size: 14px;
+  }
+
+  .pain-list {
+    list-style: none;
+    padding: 0;
+  }
+  .pain-list li {
+    font-size: 13px;
+    color: #475569;
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .pain-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .line1 .pain-list li::before { background: #fb923c; }
+  .line2 .pain-list li::before { background: #2dd4bf; }
+
+  /* ===== HEALTH LOOP ===== */
+  .loop-section {
+    margin-bottom: 36px;
+  }
+  .loop-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+  }
+  .loop-node {
+    flex: 1;
+    padding: 20px 18px;
+    text-align: center;
+    position: relative;
+    border-radius: 14px;
+    margin: 0 6px;
+  }
+  .loop-node .ln-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .loop-node .ln-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 8px;
+  }
+  .loop-node .ln-items {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.7;
+  }
+  .loop-node:nth-child(1) {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+  }
+  .loop-node:nth-child(1) .ln-num { color: #d97706; }
+
+  .loop-node:nth-child(2) {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+  }
+  .loop-node:nth-child(2) .ln-num { color: #2563eb; }
+
+  .loop-node:nth-child(3) {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+  }
+  .loop-node:nth-child(3) .ln-num { color: #0d9488; }
+
+  .loop-node:nth-child(4) {
+    background: #f5f3ff;
+    border: 1px solid #c4b5fd;
+  }
+  .loop-node:nth-child(4) .ln-num { color: #7c3aed; }
+
+  .loop-node:nth-child(5) {
+    background: #fefce8;
+    border: 1px solid #fde68a;
+  }
+  .loop-node:nth-child(5) .ln-num { color: #ca8a04; }
+
+  .loop-connector {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    color: #4a5568;
+    font-size: 16px;
+    z-index: 2;
+  }
+
+  /* ===== FOUR PILLARS ===== */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .pillar {
+    border-radius: 14px;
+    padding: 22px 20px;
+    text-align: center;
+  }
+  .pillar .p-icon { font-size: 28px; margin-bottom: 8px; }
+  .pillar .p-name { font-size: 16px; font-weight: 700; color: #1a202c; margin-bottom: 6px; }
+  .pillar .p-strategy { font-size: 12px; line-height: 1.6; margin-bottom: 10px; }
+  .pillar .p-features {
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.8;
+    color: #475569;
+  }
+  .pillar .p-features span {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px 2px;
+    font-size: 11px;
+  }
+
+  .pillar:nth-child(1) {
+    background: linear-gradient(180deg, #eef2ff, #fff);
+    border: 1px solid #c7d2fe;
+  }
+  .pillar:nth-child(1) .p-strategy { color: #4338ca; }
+  .pillar:nth-child(1) .p-features span { background: #e0e7ff; color: #3730a3; }
+
+  .pillar:nth-child(2) {
+    background: linear-gradient(180deg, #ecfdf5, #fff);
+    border: 1px solid #a7f3d0;
+  }
+  .pillar:nth-child(2) .p-strategy { color: #047857; }
+  .pillar:nth-child(2) .p-features span { background: #d1fae5; color: #065f46; }
+
+  .pillar:nth-child(3) {
+    background: linear-gradient(180deg, #fff7ed, #fff);
+    border: 1px solid #fed7aa;
+  }
+  .pillar:nth-child(3) .p-strategy { color: #c2410c; }
+  .pillar:nth-child(3) .p-features span { background: #ffedd5; color: #9a3412; }
+
+  .pillar:nth-child(4) {
+    background: linear-gradient(180deg, #fdf2f8, #fff);
+    border: 1px solid #f9a8d4;
+  }
+  .pillar:nth-child(4) .p-strategy { color: #be185d; }
+  .pillar:nth-child(4) .p-features span { background: #fce7f3; color: #9d174d; }
+
+  /* ===== AI LAYER ===== */
+  .ai-section {
+    background: linear-gradient(135deg, #f5f3ff, #f0fdfa);
+    border: 1px solid #c4b5fd;
+    border-radius: 16px;
+    padding: 26px 30px;
+    margin-bottom: 36px;
+  }
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .ai-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .ai-item .ai-phase {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .ai-item .ai-phase.p1 { background: #fef3c7; color: #92400e; }
+  .ai-item .ai-phase.p2 { background: #ccfbf1; color: #065f46; }
+  .ai-item .ai-phase.p3 { background: #ede9fe; color: #5b21b6; }
+  .ai-item .ai-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 4px;
+  }
+  .ai-item .ai-desc {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.5;
+  }
+
+  /* ===== ROADMAP ===== */
+  .roadmap {
+    margin-bottom: 36px;
+  }
+  .roadmap-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0;
+    margin-bottom: 12px;
+    align-items: stretch;
+  }
+  .rm-year {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    border-radius: 14px 0 0 14px;
+    padding: 18px 20px;
+    position: relative;
+  }
+  .rm-year .year-sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .rm-content {
+    border-radius: 0 14px 14px 0;
+    padding: 18px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .rm-tag {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .roadmap-row:nth-child(1) .rm-year {
+    background: linear-gradient(135deg, #FF6B35, #FF9F1C);
+    color: #fff;
+  }
+  .roadmap-row:nth-child(1) .rm-content {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-left: none;
+  }
+  .roadmap-row:nth-child(1) .rm-tag {
+    background: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fdba74;
+  }
+
+  .roadmap-row:nth-child(2) .rm-year {
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    color: #fff;
+  }
+  .roadmap-row:nth-child(2) .rm-content {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+    border-left: none;
+  }
+  .roadmap-row:nth-child(2) .rm-tag {
+    background: #ccfbf1;
+    color: #065f46;
+    border: 1px solid #5eead4;
+  }
+
+  .roadmap-row:nth-child(3) .rm-year {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: #fff;
+  }
+  .roadmap-row:nth-child(3) .rm-content {
+    background: #f5f3ff;
+    border: 1px solid #c4b5fd;
+    border-left: none;
+  }
+  .roadmap-row:nth-child(3) .rm-tag {
+    background: #ede9fe;
+    color: #5b21b6;
+    border: 1px solid #c4b5fd;
+  }
+
+  /* ===== COMPETITIVE ADVANTAGE ===== */
+  .advantage {
+    background: linear-gradient(135deg, #fffbeb, #fff7ed);
+    border: 1px solid #fde68a;
+    border-radius: 16px;
+    padding: 24px 30px;
+    margin-bottom: 36px;
+  }
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .adv-item {
+    text-align: center;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+  }
+  .adv-item .adv-icon { font-size: 28px; margin-bottom: 6px; }
+  .adv-item .adv-title { font-size: 15px; font-weight: 700; color: #b45309; margin-bottom: 4px; }
+  .adv-item .adv-desc { font-size: 12px; color: #64748b; line-height: 1.5; }
+
+  /* ===== GAP ANALYSIS ===== */
+  .gap-section {
+    margin-bottom: 36px;
+  }
+  .gap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .gap-card {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .gap-card .gap-icon {
+    font-size: 10px;
+    font-weight: 700;
+    color: #e11d48;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .gap-card .gap-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 6px;
+  }
+  .gap-card .gap-desc {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e2e8f0;
+    color: #94a3b8;
+    font-size: 12px;
+  }
+
+  /* ===== CONNECTOR ARROWS ===== */
+  .connector-label {
+    text-align: center;
+    margin: -8px 0 14px;
+    font-size: 11px;
+    color: #94a3b8;
+    letter-spacing: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>小米健康赛道规划 2.0 · 核心路径大图</h1>
+    <div class="subtitle">以 <em>「最懂年轻人的健康助手」</em> 为差异化定位，围绕两条用户需求主线构建完整健康体验</div>
+  </div>
+
+  <!-- POSITIONING -->
+  <div class="positioning">
+    <div>
+      <div class="pos-label">差异化定位</div>
+    </div>
+    <div>
+      <div class="pos-text">最懂年轻人的健康助手</div>
+      <div class="pos-desc">不是最贵的，而是最了解你、最会说人话的。用「你今天状态怎么样」把健康能力串起来。</div>
+    </div>
+    <div style="display: flex; gap: 12px; flex-shrink: 0;">
+      <div class="tag orange">大众价位</div>
+      <div class="tag cyan">年轻用户</div>
+      <div class="tag purple">深度健康体验</div>
+    </div>
+  </div>
+
+  <!-- USER INSIGHT -->
+  <div class="user-insight">
+    <div class="insight-card">
+      <div class="ic-title">目标用户画像</div>
+      <div class="stat-row">
+        <div class="stat-item"><div class="num">2880万</div><div class="label">年出货量 (2024)</div></div>
+        <div class="stat-item"><div class="num">65-80%</div><div class="label">18-35岁占比</div></div>
+        <div class="stat-item"><div class="num">70-76%</div><div class="label">亚健康比例</div></div>
+      </div>
+      <div class="ic-grid" style="margin-top: 12px;">
+        <div class="tag orange">大学生</div>
+        <div class="tag orange">初入职场年轻白领</div>
+        <div class="tag orange">科技爱好者</div>
+        <div class="tag orange">价格敏感</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="ic-title">TOP 4 健康问题 · 穿戴可深度介入</div>
+      <div class="ic-grid">
+        <div class="tag pink">😴 睡眠障碍 40-53%</div>
+        <div class="tag pink">😰 焦虑/压力 20-30%</div>
+        <div class="tag pink">🏃 运动不足 60-70%</div>
+        <div class="tag pink">⚖️ 体重管理 超重34%</div>
+      </div>
+      <div style="font-size: 12px; color: #64748b; margin-top: 12px; line-height: 1.6;">
+        核心矛盾：<strong style="color:#e11d48">高焦虑 × 低行动</strong> ——「朋克养生」<br>
+        关键洞察：相比「健康管理」，年轻人更期望 <strong style="color:#0d9488">「状态管理」</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORE GAP -->
+  <div class="section-title pink" style="color: #be123c;">
+    <span style="display:inline-block;width:4px;height:18px;border-radius:2px;background:#e11d48;"></span>
+    核心差距 — 结构性缺失
+  </div>
+  <div class="gap-grid" style="margin-bottom: 36px;">
+    <div class="gap-card">
+      <div class="gap-icon">差距 1</div>
+      <div class="gap-title">缺少个人基线</div>
+      <div class="gap-desc">无 Vitals 基线对比，用户「看到数据但看不懂」</div>
+    </div>
+    <div class="gap-card">
+      <div class="gap-icon">差距 2</div>
+      <div class="gap-title">缺少综合评分</div>
+      <div class="gap-desc">无聚合 Readiness Score，各指标孤立展示</div>
+    </div>
+    <div class="gap-card">
+      <div class="gap-icon">差距 3</div>
+      <div class="gap-title">无行动闭环</div>
+      <div class="gap-desc">能告诉「心率是72」但不能告诉「你今天该做什么」</div>
+    </div>
+    <div class="gap-card">
+      <div class="gap-icon">差距 4</div>
+      <div class="gap-title">语言/入口不对</div>
+      <div class="gap-desc">健康管理语言推给年轻人转化率低，需翻译为「状态管理」</div>
+    </div>
+  </div>
+
+  <!-- TWO MAIN LINES -->
+  <div class="section-title orange">两条用户需求主线</div>
+  <div class="two-lines">
+    <div class="line-card line1">
+      <div class="line-header">
+        <div class="line-icon">🔍</div>
+        <div>
+          <div class="line-name">主线一 · 健康风险预警</div>
+          <div class="line-desc">「帮我发现问题」</div>
+        </div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">扩大数据采集</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">提升风险识别</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">让用户看懂风险</div>
+      </div>
+      <ul class="pain-list">
+        <li><strong>采集层：</strong>现有指标优化 + 新增传感器 + 三方数据导入（体检报告、血糖仪）</li>
+        <li><strong>识别层：</strong>医疗认证风险 + 健康研究风险 + <strong style="color:#b45309">Vitals 个人基线（关键缺失）</strong></li>
+        <li><strong>呈现层：</strong>AI 朋友式健康摘要 + 趋势可视化 + 体检 AI 解读</li>
+        <li><strong>年轻化翻译：</strong>用「状态偏离」替代「疾病风险」，降低心理门槛</li>
+      </ul>
+    </div>
+
+    <div class="line-card line2">
+      <div class="line-header">
+        <div class="line-icon">💪</div>
+        <div>
+          <div class="line-name">主线二 · 健康管理</div>
+          <div class="line-desc">「帮我改善问题」</div>
+        </div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">理解层（评分+归因）</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">行动层（干预方案）</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">反馈层（效果激励）</div>
+      </div>
+      <ul class="pain-list">
+        <li><strong>理解层：</strong>今日状态评分（0-100）+ 充电/耗电归因 + 行为日志关联分析</li>
+        <li><strong>行动层：</strong>状态驱动的微行动推荐 + 四大基石干预 + AI 朋友式建议</li>
+        <li><strong>反馈层：</strong>即时完成动画 + 行为-效果归因 + 游戏化激励 + 身体年龄牵引</li>
+        <li><strong>枢纽：</strong><strong style="color:#0d9488">「今日状态」</strong>为核心，串联所有模块</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HEALTH LOOP -->
+  <div class="section-title cyan">健康体验闭环 · 以「今日状态」为枢纽</div>
+  <div class="loop-section">
+    <div class="loop-flow">
+      <div class="loop-node">
+        <div class="ln-num">STEP 01</div>
+        <div class="ln-title">感知</div>
+        <div class="ln-items">生理数据<br>行为数据<br>环境数据<br>主观输入</div>
+      </div>
+      <div class="loop-node">
+        <div class="ln-num">STEP 02</div>
+        <div class="ln-title">理解</div>
+        <div class="ln-items">今日状态评分<br>充电/耗电归因<br>AI 健康摘要<br>跨指标关联</div>
+      </div>
+      <div class="loop-node">
+        <div class="ln-num">STEP 03</div>
+        <div class="ln-title">行动</div>
+        <div class="ln-items">状态驱动建议<br>微行动推荐<br>一键执行<br>智能提醒时机</div>
+      </div>
+      <div class="loop-node">
+        <div class="ln-num">STEP 04</div>
+        <div class="ln-title">改变</div>
+        <div class="ln-items">调整作息<br>完成运动<br>管理饮食<br>释放压力</div>
+      </div>
+      <div class="loop-node">
+        <div class="ln-num">STEP 05</div>
+        <div class="ln-title">反馈</div>
+        <div class="ln-items">即时奖励<br>趋势改善<br>游戏化激励<br>身体年龄回溯</div>
+      </div>
+    </div>
+    <div class="connector-label">▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ 持续循环 · 底层支撑：个人基线 × 数据积累 × AI 个性化引擎 ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸ ▸</div>
+  </div>
+
+  <!-- FOUR PILLARS -->
+  <div class="section-title cyan">四大健康基石 · 干预策略</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="p-icon">🌙</div>
+      <div class="p-name">充足睡眠</div>
+      <div class="p-strategy">监测 → 分析 → 干预<br>年轻人 #1 健康痛点</div>
+      <div class="p-features">
+        <span>行为日志</span>
+        <span>睡眠评分归因</span>
+        <span>睡眠洞察</span>
+        <span>睡眠计划</span>
+        <span>个性化提醒</span>
+        <span>助眠功能</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-icon">🏃</div>
+      <div class="p-name">适度运动</div>
+      <div class="p-strategy">分阶段用户分层<br>低门槛 → 正反馈 → 习惯养成</div>
+      <div class="p-features">
+        <span>运动阶段识别</span>
+        <span>类型推荐</span>
+        <span>强度控制</span>
+        <span>即时反馈</span>
+        <span>健康关联分析</span>
+        <span>VO2max优化</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-icon">🥗</div>
+      <div class="p-name">饮食均衡</div>
+      <div class="p-strategy">AI 降低记录门槛<br>热量直觉化呈现</div>
+      <div class="p-features">
+        <span>语音识别记录</span>
+        <span>拍照识别</span>
+        <span>自动匹配</span>
+        <span>热量直觉化</span>
+        <span style="color:#c2410c">100千卡≈1鸡蛋</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-icon">🧘</div>
+      <div class="p-name">心理平衡</div>
+      <div class="p-strategy">不做冥想 App<br>发挥穿戴硬件优势，趣味减压</div>
+      <div class="p-features">
+        <span>压力算法升级</span>
+        <span>手势捏气泡</span>
+        <span>状态表盘</span>
+        <span>按压放烟花</span>
+        <span>减压小游戏</span>
+        <span>朋友式提醒</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI CAPABILITY -->
+  <div class="ai-section">
+    <div class="section-title purple">AI 赋能 · 差异化突破口</div>
+    <div style="font-size: 13px; color: #64748b; margin-bottom: 4px;">语言风格原则：像朋友聊天 · 给微行动不给大道理 · 用年轻人参照系（奶茶/鸡蛋/充电）· 状态语言优先</div>
+    <div class="ai-grid">
+      <div class="ai-item">
+        <div class="ai-phase p1">2026</div>
+        <div class="ai-name">异常模式识别</div>
+        <div class="ai-desc">心率/血氧/睡眠异常模式自动识别，减少误报</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p1">2026</div>
+        <div class="ai-name">AI 朋友式摘要</div>
+        <div class="ai-desc">「这周睡得有点拉胯，周三周五熬太晚了」</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p2">2027</div>
+        <div class="ai-name">AI 健康助手</div>
+        <div class="ai-desc">对话式问答，基于个人数据朋友语气给建议</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p2">2027</div>
+        <div class="ai-name">精准处方生成</div>
+        <div class="ai-desc">「推荐28分钟慢跑，跑完状态能回到80+」</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p2">2027</div>
+        <div class="ai-name">跨指标关联</div>
+        <div class="ai-desc">「你运动日的睡眠质量比不运动日高15%」</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p2">2027</div>
+        <div class="ai-name">体检报告解读</div>
+        <div class="ai-desc">AI 翻译专业指标为通俗语言</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p3">2028</div>
+        <div class="ai-name">预测式健康</div>
+        <div class="ai-desc">「照这趋势周末可能扛不住，今晚早点休息」</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-phase p3">2028</div>
+        <div class="ai-name">智能提醒时机</div>
+        <div class="ai-desc">在最可能执行的时段推送，不固定时间轰炸</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="section-title orange">落地节奏 · 三年规划</div>
+  <div class="roadmap">
+    <div class="roadmap-row">
+      <div class="rm-year">
+        2026
+        <span class="year-sub">打通闭环</span>
+      </div>
+      <div class="rm-content">
+        <div class="rm-tag">🏠 健康首页改版</div>
+        <div class="rm-tag">📊 今日状态评分</div>
+        <div class="rm-tag">⚡ 充电/耗电归因</div>
+        <div class="rm-tag">🤖 AI 朋友式摘要</div>
+        <div class="rm-tag">😴 专业睡眠 4 件套</div>
+        <div class="rm-tag">🧘 压力 2.0</div>
+        <div class="rm-tag">🎮 连续打卡+分享卡片</div>
+        <div class="rm-tag">📝 快捷记录</div>
+      </div>
+    </div>
+    <div class="roadmap-row">
+      <div class="rm-year">
+        2027
+        <span class="year-sub">能力扩展</span>
+      </div>
+      <div class="rm-content">
+        <div class="rm-tag">❤️ Vitals 基线</div>
+        <div class="rm-tag">🏃 运动管理体系</div>
+        <div class="rm-tag">🥗 AI 饮食记录</div>
+        <div class="rm-tag">📋 健康档案</div>
+        <div class="rm-tag">🤖 AI 健康助手</div>
+        <div class="rm-tag">🏆 成就徽章体系</div>
+        <div class="rm-tag">🎯 身体年龄</div>
+        <div class="rm-tag">🎮 减压小游戏</div>
+      </div>
+    </div>
+    <div class="roadmap-row">
+      <div class="rm-year">
+        2028
+        <span class="year-sub">智能深化</span>
+      </div>
+      <div class="rm-content">
+        <div class="rm-tag">🔮 预测式健康</div>
+        <div class="rm-tag">📏 身体成分</div>
+        <div class="rm-tag">🩸 血糖研究</div>
+        <div class="rm-tag">🌡️ 感冒发烧预警</div>
+        <div class="rm-tag">🧠 情绪风险研究</div>
+        <div class="rm-tag">🍷 酒精摄入监测</div>
+        <div class="rm-tag">🐾 状态角色养成</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETITIVE ADVANTAGE -->
+  <div class="advantage">
+    <div class="section-title orange">小米的破局机会</div>
+    <div class="adv-grid">
+      <div class="adv-item">
+        <div class="adv-icon">👥</div>
+        <div class="adv-title">最大年轻用户基数</div>
+        <div class="adv-desc">千万级年出货，18-35 岁占 65-80%<br>这是 AI 健康能力的核心燃料</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🎯</div>
+        <div class="adv-title">无人占据的交叉点</div>
+        <div class="adv-desc">大众价位 × 年轻用户 × 深度健康体验<br>Apple/Oura 贵，华为偏中年</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🗣️</div>
+        <div class="adv-title">状态管理新语言</div>
+        <div class="adv-desc">用「你今天状态好不好」串联所有能力<br>年轻人听得懂、愿意用</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    小米健康赛道规划 2.0 · 核心路径大图 · 以「状态管理」为呈现策略，以「两条主线 × AI」为能力底座
+  </div>
+
+</div>
+</body>
+</html>
